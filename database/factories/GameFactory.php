@@ -23,6 +23,7 @@ class GameFactory extends Factory
     {
         return [
             'season_id' => 1,
+            'score' => 5,
         ];
     }
 }

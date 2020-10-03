@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Season;
+use App\Services\UpdateSeasonScore;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -12,9 +14,11 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(int $id)
     {
-        //
+        $games = Game::where('season_id', $id)->get();
+        $season = Season::findOrFail($id);
+        return view('games.index', ['games' => $games, 'season' => $season]);
     }
 
     /**
@@ -22,9 +26,9 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(int $id)
     {
-        //
+        return view('games.create', ['season_id' => $id]);
     }
 
     /**
@@ -35,7 +39,20 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'season_id' => 'required',
+            'score' => 'required',
+        ]);
+
+        $game = new Game;
+        $game->season_id = $request->input('season_id');
+        $game->score = $request->input('score');
+        $game->save();
+
+        $seasonScoreVerifier = new UpdateSeasonScore();
+        $seasonScoreVerifier->verifyScore($game->season, $game);
+
+        return redirect('/games/'.$request->input('season_id'));
     }
 
     /**

@@ -55,8 +55,7 @@ class SeasonController extends Controller
      */
     public function show(int $id)
     {
-        $season = Season::findOrFail($id);
-        return view('season.show', ['season' => $season]);
+        //
     }
 
     /**

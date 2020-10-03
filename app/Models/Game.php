@@ -10,8 +10,13 @@ class Game extends Model
 {
     use HasFactory;
 
-    public function seasons()
+    public function season()
     {
         return $this->belongsTo('App\Models\Season', 'season_id');
     }
+
+    protected $fillable = [
+        'season_id', 
+        'score',
+    ];
 }
