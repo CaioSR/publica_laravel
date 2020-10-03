@@ -1,4 +1,4 @@
-# Disponível em [crshimada.com/publica_laravel/public](crshimada.com/publica_laravel/public)
+# Disponível em [crshimada.com/publica_laravel/public](https://crshimada.com/publica_laravel/public)
 ### Alternativamente você pode baixar esse projeto.
 
 ### Esse é uma versão do projeto no padrão MVC com Laravel
