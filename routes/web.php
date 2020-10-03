@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeasonController;
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,6 @@ Route::get('/', function () {
 });
 
 Route::resource('seasons', SeasonController::class);
+Route::get('games/{id}', [GameController::class, 'index'])->name('games.create');
+Route::get('games/{id}/create', [GameController::class, 'create'])->name('games->create');
+Route::post('games/{id}', [GameController::class, 'store'])->name('games->store');

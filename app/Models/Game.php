@@ -14,4 +14,9 @@ class Game extends Model
     {
         return $this->belongsTo('App\Models\Season', 'season_id');
     }
+
+    protected $fillable = [
+        'season_id', 
+        'score',
+    ];
 }
