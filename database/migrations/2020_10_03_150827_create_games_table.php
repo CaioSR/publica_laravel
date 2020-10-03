@@ -15,9 +15,10 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('season_id')->references('id')->on('seasons');
+            $table->foreignId('season_id')->references('id')->on('seasons')->onDelete('cascade');
             $table->integer('score');
             $table->timestamps();
+            //$table->engine = 'InnoDB';
         });
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\Season;
+use App\Services\UpdateSeasonScore;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -43,10 +44,13 @@ class GameController extends Controller
             'score' => 'required',
         ]);
 
-        Game::create([
-            'season_id' => $request->input('season_id'),
-            'score' => $request->input('score'),
-        ]);
+        $game = new Game;
+        $game->season_id = $request->input('season_id');
+        $game->score = $request->input('score');
+        $game->save();
+
+        $seasonScoreVerifier = new UpdateSeasonScore();
+        $seasonScoreVerifier->verifyScore($game->season, $game);
 
         return redirect('/games/'.$request->input('season_id'));
     }

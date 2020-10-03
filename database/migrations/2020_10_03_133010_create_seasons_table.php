@@ -21,6 +21,7 @@ class CreateSeasonsTable extends Migration
             $table->integer('maxScoreCounter')->default(0);
             $table->integer('minScoreCounter')->default(0);
             $table->timestamps();
+            //$table->engine = 'InnoDB';
         });
     }
 
