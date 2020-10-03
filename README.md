@@ -1,4 +1,4 @@
-# Disponível em [aqui](http://publav.crshimada.com)
+# Disponível [aqui](http://publav.crshimada.com)
 ### Alternativamente você pode baixar esse projeto.
 
 ### Esse é uma versão do projeto no padrão MVC com Laravel
