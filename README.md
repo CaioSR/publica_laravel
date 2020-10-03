@@ -16,7 +16,7 @@
 
 ### Outras configurações
 
-- Configurar arquivo env. Copie o env.example para en
+- Configurar arquivo env. Copie o env.example para env
 - Define as variáveis do banco de dados
 - Para criar as tables do banco, no terminal rode:
     - php artisan migrate
